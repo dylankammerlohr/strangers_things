@@ -13,5 +13,10 @@ const root = ReactDOM.createRoot(document.getElementById('app'));
 root.render(
     <BrowserRouter>
         <App />
+            <Routes>
+                <Route path="/posts">
+                </Route>
+           </Routes> 
+            
     </BrowserRouter>
     )
