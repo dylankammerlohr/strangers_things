@@ -4,7 +4,7 @@ import React from 'react'
 const UserPost = ({allPosts}) => {
    console.log(allPosts, 'all posts in post comp')
     return(
-        <div className="postss">
+        <div className="posts">
             {allPosts.map((post) => {
                 return (
                     <div>
