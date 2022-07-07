@@ -67,6 +67,25 @@ export async function registerPerson(event){
     console.log(tokenFromStorage)
 }
 
+export async function loginPerson(username, password){
+  const response = await fetch(`${APIURL}/users/login`,
+  {
+      method: "POST",
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+          user: {
+            username: username,
+            password: password
+          }
+        })
+  })
+  console.log(response, 'api/index response')
+  const result = await response.json()
+  const token = result.data.token
+  return token
+}
 
 // profile
 // export const getProfile = async(token) => {

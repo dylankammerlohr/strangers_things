@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { getPosts, registerPerson } from "../api";
-import { Posts, Register } from "./";
+import { Posts, Register, Navbar, Login, Profile } from "./";
 
 
 export default function App() {
@@ -22,10 +22,14 @@ export default function App() {
 
   console.log(allPosts);
   return (
+    <>
+    <Navbar />
       <Routes>
+        <Route path='/profile' element={<Profile/>}/>
+        <Route path='/login' element={<Login />}/>
         <Route path="/register" element={<Register />}/>
         <Route path="/posts" element={<Posts allPosts={allPosts} />} />
       </Routes>
-
+      </>
   );
 }

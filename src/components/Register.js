@@ -1,4 +1,5 @@
 import React from 'react'
+import { registerPerson } from '../api';
 
 const userRegister = () => {
     async function handleSubmit(event) {
