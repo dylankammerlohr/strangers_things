@@ -1,7 +1,14 @@
 import React from 'react'
 
-const UserPost = () => {
+ 
+const UserPost = ({getPost}) => {
+   
     return(
-        <div className="post"></div>
+        <div className="posts">
+            <h2>{getPost}</h2>
+        </div>
     )
+
 }
+
+export default UserPost
