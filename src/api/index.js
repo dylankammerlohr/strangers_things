@@ -3,20 +3,23 @@ export const COHORT = "2206-FTB-ET-WEB-FT"
 export const APIURL = `https://strangers-things.herokuapp.com/api/${COHORT}`
 
 
-export const getPost = async() => {
-    const response = await fetch(`${APIURL}/posts`)
-    const result = await response.json()
-    // .then(response => response.json())
-    // .then(result => {
-    console.log(result, 'result');
-  }
-  console.log(getPost, 'getpost')
-//   )
-//     .catch(console.error)
-// }
-
-
-
+// export const getPost = async() => {
+//     const response = await fetch(`${APIURL}/posts`)
+//     const result = await response.json()
+//     // .then(response => response.json())
+//     // .then(result => {
+//     console.log(result, 'result');
+//   }
+//   console.log(getPost, 'getpost')
+// //   )
+// //     .catch(console.error)
+// // }
+export async function getPosts() {
+  const response = await fetch(`${APIURL}/posts`)
+  const result = await response.json()
+  // console.log(result)
+  return result.data.posts
+}
 
 // export const UserPost = async (event) => {
     

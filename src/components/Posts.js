@@ -1,11 +1,11 @@
 import React from 'react'
 
  
-const UserPost = ({getPost}) => {
-   
+const UserPost = ({allPosts}) => {
+   console.log(allPosts, 'all posts in post comp')
     return(
         <div className="posts">
-            <h2>{getPost}</h2>
+            <h2>{}</h2>
         </div>
     )
 

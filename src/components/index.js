@@ -1,2 +1,2 @@
 export {default as App} from './App'
-export {default as UserPost} from './Posts'
+export {default as Posts} from './Posts'
