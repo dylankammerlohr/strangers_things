@@ -84,6 +84,7 @@ export async function loginPerson(username, password){
   console.log(response, 'api/index response')
   const result = await response.json()
   const token = result.data.token
+  console.log(token, 'token in api index')
   return token
 }
 
