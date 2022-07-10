@@ -4,9 +4,10 @@ import {Navigate} from 'react-router-dom'
 const UserPost = ({allPosts}) => {
    console.log(allPosts, 'all posts in post comp')
 
-   const createPostPage = () => {
-    <Navigate to='/posts/add' replace={true}/>
-   }
+//    const createPostPage = (event) => {
+//     event.preventDefault()
+//     <Navigate to='/posts/add' replace={true}/>
+//    }
 
     return(
         

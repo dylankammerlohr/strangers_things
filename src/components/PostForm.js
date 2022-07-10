@@ -1,16 +1,24 @@
-import React from 'react'
+import React from "react";
 
 const PostForm = () => {
-    
-    return(
-        <form>
-            <input id='title' placeholder='Title'/>
-            <input id='title' placeholder='Description'/>
-            <input id='title' placeholder='Price'/>
-            <input id='title' placeholder='Location'/>
-        </form>
-    )
-}
 
+    const [checked, setChecked] = React.useState(false)
 
-export default PostForm
+    const handleChange = () => {
+        setChecked(!checked)
+    }
+  return (
+    <form id='postForm'>
+      <input id="title" placeholder="Title" />
+      <input id="description" placeholder="Description" />
+      <input id="price" placeholder="Price" />
+      <input id="location" placeholder="Location" />
+      <label>
+        Deliver?
+        <input id="deliver" type="checkbox" checked={checked} onChange={handleChange} placeholder="Deliver" />
+      </label>
+    </form>
+  );
+};
+
+export default PostForm;
