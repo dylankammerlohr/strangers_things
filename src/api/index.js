@@ -87,8 +87,8 @@ export async function loginPerson(username, password){
           }
         })
   })
-  console.log(response, 'api/index response')
   const result = await response.json()
+  console.log(result, 'api/index result')
   const token = result.data.token
   console.log(token, 'token in api index')
   return token
@@ -107,4 +107,16 @@ export const getProfile = async(token) => {
     // const data = result.data
     // console.log(data, 'data')
     return result
+}
+
+export const deletePost = async(token, postID) => {
+  const response = await fetch(`${APIURL}/posts/${postID}`, {
+    method: 'DELETE', 
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    },
+  })
+  const result = await response.json()
+  console.log(result)
 }

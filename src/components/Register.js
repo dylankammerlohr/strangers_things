@@ -6,7 +6,6 @@ const userRegister = () => {
         event.preventDefault();
         console.log("this is your event", event);
         registerPerson(event);
-        const backFromAPI = await registerPerson(event);
       }
     return (
         <form onSubmit={handleSubmit}>

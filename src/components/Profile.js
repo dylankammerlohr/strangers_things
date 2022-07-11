@@ -3,35 +3,37 @@ import { getProfile } from "../api";
 
 const Profile = () => {
   const [myInfo, setMyInfo] = useState({});
+  const [messages, setMessages] = useState([])
+  const [user, setUser] = useState('')
 
  let token = localStorage.getItem("token");
-
-  useEffect(() => {
-    const getMyInfo = async () => {
+ 
+ const getMyInfo = async () => {
       const userData = await getProfile(token);
+      setMessages(userData.data.messages)
+      setUser(userData.data._id)
       console.log(userData, "profile returned info");
       setMyInfo(userData);
-      console.log(userData.data, 'userData.data.')
-      console.log(userData.messages, 'userdata.messages')
     }
+  useEffect(() => {
     getMyInfo();
   }, []);
-  console.log(myInfo.data.messages, 'myinfo.messages')
+  console.log(myInfo, 'myinfo')
   return (
     <div>
-        <h1>Messages</h1>
-        {myInfo.data ? 
+      <h1>Messages</h1>
         <div>
-        {myInfo.data.messages.map((message) => {
-          return (
+        {messages.map((message) => {
+          return ( message.fromUser._id !== user ?
             <div key={message._id}>
-              <h1>Message is here</h1>
-              <p>{message}</p>
-            </div>
+              <h3>from: {message.fromUser.username}</h3>
+              <p>message: {message.content}</p>
+              <p>post: {message.post.title}</p>
+            </div> : null 
           );
-        })} </div> : null }
-      </div>
-    
+        })}
+        </div>
+    </div>
   )
 };
 
