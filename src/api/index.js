@@ -21,27 +21,33 @@ export async function getPosts() {
   return result.data.posts
 }
 
-// export const UserPost = async (event) => {
-    
-//     const response = await fetch(`${APIURL}/posts`,{
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json',
-//             'Authorization': 'Bearer TOKEN_STRING_HERE'
-//           },
-//         body: JSON.stringify({
-//             post: {
-//                 title: "My favorite stuffed animal",
-//                 description: "This is a pooh doll from 1973. It has been carefully taken care of since I first got it.",
-//                 price: "$480.00",
-//                 willDeliver: true
-//             }
-//         })
-//     })
-//     console.log(response)
-//     const result = await response.json()
-//     console.log(result)
-// }
+export const newPost = async (event) => {
+    const token = localStorage.getItem('token')
+    const newPostTitle = event.target[0].value
+    const newPostDescription = event.target[1].value
+    const newPostPrice = event.target[2].value
+    const newPostLocation = event.target[3].value
+    const newPostDeliver = event.target[4].value
+    const response = await fetch(`${APIURL}/posts`,{
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+        body: JSON.stringify({
+            post: {
+                title: newPostTitle,
+                description: newPostDescription,
+                price: newPostPrice,
+                location: newPostLocation,
+                willDeliver: newPostDeliver
+            }
+        })
+    })
+    console.log(response, 'api index response')
+    const result = await response.json()
+    console.log(result, 'api index result')
+}
 
 export async function registerPerson(event){
     const registerUsername = event.target[0].value

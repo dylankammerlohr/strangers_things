@@ -1,13 +1,10 @@
 import React from 'react'
-import {Navigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
  
 const UserPost = ({allPosts}) => {
    console.log(allPosts, 'all posts in post comp')
 
-//    const createPostPage = (event) => {
-//     event.preventDefault()
-//     <Navigate to='/posts/add' replace={true}/>
-//    }
+    let navigate = useNavigate()
 
     return(
         
@@ -17,7 +14,9 @@ const UserPost = ({allPosts}) => {
                 <button 
                 type = 'button' 
                 id = 'newPost'
-                onClick = {createPostPage}>
+                onClick = {() => {
+                    navigate('/posts/add')
+                }}>
                 Add New Post</button>
             </div>
 
