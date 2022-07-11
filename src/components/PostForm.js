@@ -1,16 +1,16 @@
-import React from "react";
+import React, {useState} from "react";
 import { newPost } from "../api";
 
 const PostForm = () => {
 
-    const [checked, setChecked] = React.useState(false)
+    const [checked, setChecked] = useState(false)
 
     const handleChange = () => {
         setChecked(!checked)
     }
     const handleSubmit = async(event) =>{
       event.preventDefault()
-      console.log('this is event.target', event.target[0])
+      console.log('this is event', event)
       newPost(event)
     }
   return (

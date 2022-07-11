@@ -27,7 +27,7 @@ export const newPost = async (event) => {
     const newPostDescription = event.target[1].value
     const newPostPrice = event.target[2].value
     const newPostLocation = event.target[3].value
-    const newPostDeliver = event.target[4].value
+    const newPostDeliver = event.target[4].checked
     const response = await fetch(`${APIURL}/posts`,{
         method: 'POST',
         headers: {
