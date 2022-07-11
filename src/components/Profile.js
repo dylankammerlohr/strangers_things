@@ -12,27 +12,25 @@ const Profile = () => {
       console.log(userData, "profile returned info");
       setMyInfo(userData);
       console.log(userData.data, 'userData.data.')
-      console.log(userData.messages, 'myInfo.data.messages')
+      console.log(userData.messages, 'userdata.messages')
     }
     getMyInfo();
   }, []);
-  console.log(myInfo.data, 'myinfo.data')
+  console.log(myInfo.data.messages, 'myinfo.messages')
   return (
     <div>
         <h1>Messages</h1>
-        {myInfo._id ? 
+        {myInfo.data ? 
         <div>
-            {myInfo.messages.map((element) => {
-            return (
-              <div key={element._id}>
-                <h1>Message is here</h1>
-                <p>message: {element}</p>
-              </div>
-            );
-          })}
-        </div>:
-        <div>there is no data</div>}
-    </div>
+        {myInfo.data.messages.map((message) => {
+          return (
+            <div key={message._id}>
+              <h1>Message is here</h1>
+              <p>{message}</p>
+            </div>
+          );
+        })} </div> : null }
+      </div>
     
   )
 };
