@@ -4,9 +4,9 @@ import { getPosts, registerPerson } from "../api";
 import { Posts, Register, Navbar, Login, Profile, PostForm } from "./";
 
 
-export default function App() {
+export default function App(props) {
   const [allPosts, setAllPosts] = useState([]);
-
+  const [token] = [props.token]
   async function fetchAllPosts() {
     try {
       const data = await getPosts();
@@ -23,10 +23,10 @@ export default function App() {
     <>
     <Navbar />
       <Routes>
-        <Route path='/profile' element={<Profile/>}/>
+        <Route path='/profile' element={<Profile token = {token}/>}/>
         <Route path='/login' element={<Login />}/>
         <Route path="/register" element={<Register />}/>
-        <Route path="/posts" element={<Posts allPosts={allPosts} />} />
+        <Route path="/posts" element={<Posts allPosts={allPosts} token = {token}/>} />
         <Route path='/posts/add' element={<PostForm />}/>
       </Routes>
       </>

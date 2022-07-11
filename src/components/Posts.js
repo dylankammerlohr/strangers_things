@@ -21,13 +21,9 @@ const UserPost = ({allPosts}) => {
     let navigate = useNavigate()
 
 
-console.log(allPosts[43], 'my post')
+    console.log(allPosts[52], 'my post')
 
-    const deletePostButton = async(event) => {
-        event.preventDefault()
-        const token = localStorage.getItem('token')
-        deletePost(token, event.target.id)
-    }
+    
     return(
         
         <div className="post page">
@@ -51,9 +47,10 @@ console.log(allPosts[43], 'my post')
                         <h4>{post.price}</h4>
                         <h3>Seller: {post.author.username}</h3>
                         <h4>{post.location}</h4>
-                        {(post.isAuthor) ? 
-                        <div><button onClick={deletePostButton}>Delete Post</button></div>
-                        : <p>not author</p>}
+                        {userId === post.author._id ? 
+                        <div><button onClick={() => {const token = localStorage.getItem('token')
+                        deletePost(token, post._id)}}>Delete Post</button></div>
+                        : null}
                     </div>
                 )
             })}

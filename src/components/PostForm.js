@@ -19,8 +19,7 @@ const PostForm = () => {
       <input id="description" placeholder="Description" />
       <input id="price" placeholder="Price" />
       <input id="location" placeholder="Location" />
-      <label>
-        Deliver?
+      <label>Deliver?
         <input id="deliver" type="checkbox" checked={checked} onChange={handleChange} placeholder="Deliver" />
       </label>
       <button type='Submit'>Submit Post</button>

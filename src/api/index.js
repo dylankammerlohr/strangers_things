@@ -118,5 +118,6 @@ export const deletePost = async(token, postID) => {
     },
   })
   const result = await response.json()
+  
   console.log(result)
 }
