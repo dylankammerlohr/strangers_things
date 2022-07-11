@@ -95,14 +95,14 @@ export async function loginPerson(username, password){
 }
 
 // profile
-// export const getProfile = async(token) => {
-//     const response = await fetch(`${APIURL}/users/me`, {
-//         headers: {
-//             'Content-Type': 'application/json',
-//             'Authorization': `Bearer ${token}`
-//           }, 
-//     })
-//     const result = await response.json()
-//     const data = result.data
-//     return data
-// }
+export const getProfile = async(token) => {
+    const response = await fetch(`${APIURL}/users/me`, {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          }, 
+    })
+    const result = await response.json()
+    const data = result.data
+    return data
+}
