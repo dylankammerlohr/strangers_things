@@ -104,5 +104,6 @@ export const getProfile = async(token) => {
     })
     const result = await response.json()
     const data = result.data
+    console.log(data, 'data')
     return data
 }

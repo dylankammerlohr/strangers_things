@@ -10,7 +10,6 @@ export default function App() {
   async function fetchAllPosts() {
     try {
       const data = await getPosts();
-      console.log(data);
       setAllPosts(data);
     } catch (err) {
       console.log(err);
@@ -20,7 +19,6 @@ export default function App() {
     fetchAllPosts();
   }, []);
 
-  console.log(allPosts);
   return (
     <>
     <Navbar />
