@@ -1,11 +1,28 @@
+*{
+    margin: 0;
+}
+/* nav{
+    display:flex;
+    align-items: center;
+    background-color: rgb(25, 130, 160);
+    height: 8vh;
+} */
+
 #postForm{
     display: flex;
     flex-direction:column;
 }
 
+.posts{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .single-post,
 #message-box {
-    display: block;
+    display: block, flex;
+    flex-direction: column;
+    width: 60%;
     box-sizing: border-box;
     border: 1px solid black;
     margin: 5px;

@@ -5,6 +5,7 @@ const Profile = () => {
   const [myInfo, setMyInfo] = useState({});
   const [messages, setMessages] = useState([])
   const [user, setUser] = useState('')
+  const [post, setPost] = useState([])
 
  let token = localStorage.getItem("token");
  
@@ -12,17 +13,33 @@ const Profile = () => {
       const userData = await getProfile(token);
       setMessages(userData.data.messages)
       setUser(userData.data._id)
-      console.log(userData, "profile returned info");
+      setPost(userData.data.posts)
+      console.log(userData.data.posts, "profile returned info");
       setMyInfo(userData);
     }
   useEffect(() => {
     getMyInfo();
   }, []);
   console.log(myInfo, 'myinfo')
+  console.log(post, 'post')
   return (
     <div>
-      {token ? <h2>Messages</h2> : <h2 className="profile-not-logged-in">Login/Register to view!</h2>}
+      {token ? <h2>Activity</h2> : <h2 className="profile-not-logged-in">Login/Register to view!</h2>}
         <div>
+          <h2>My Posts</h2>
+          {post.map((post) => {
+            return (post.active ? 
+              <div className='single-post'>
+                <h2>{post.title}</h2>
+                        <p>{post.description}</p>
+                        <h4>Price: {post.price}</h4>
+                        <h4>Location: {post.location}</h4>
+              </div>
+            :null )
+          })} 
+        </div>
+        <div>
+        <h2>Messages To Me</h2>  
         {messages.map((message) => {
           return ( message.fromUser._id !== user ?
             <div key={message._id} id="message-box">
@@ -32,6 +49,18 @@ const Profile = () => {
             </div> : null 
           );
         })}
+        </div>
+        <div>
+          <h2>Messages From Me</h2>
+          {messages.map((message) => {
+            return ( message.fromUser._id === user ?
+              <div key={message._id} id="message-box">
+             
+                <p>{message.content}</p>
+                <p>Post: {message.post.title}</p>
+              </div> : null 
+            );
+          })}
         </div>
     </div>
   )

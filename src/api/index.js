@@ -121,3 +121,21 @@ export const deletePost = async(token, postID) => {
   
   console.log(result)
 }
+
+export const sendMessage = async(token, postID, message) => {
+  const response = await fetch(`${APIURL}/posts/${postID}/messages`, {
+    method: 'POST', 
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    },
+    body: JSON.stringify({
+      message: {
+        content: `${message}`
+      }
+    })
+  })
+  const result = await response.json()
+  
+  console.log(result)
+}

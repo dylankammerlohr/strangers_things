@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { deletePost, getProfile } from '../api'
+import { deletePost, getProfile, sendMessage } from '../api'
  
 const UserPost = ({allPosts}) => {
 //    console.log(allPosts, 'all posts in post comp')
@@ -20,10 +20,18 @@ const UserPost = ({allPosts}) => {
 
     let navigate = useNavigate()
 
-    console.log(allPosts[52], 'my post')
+    console.log(allPosts[0], 'my post')
 
+      const handleSubmit = async(event) =>{
+        event.preventDefault()
+        const token = localStorage.getItem('token')
+        let postID = event.target.id
+        let message = event.target[0].value
+        sendMessage(token, postID, message)
+        console.log(event.target[0].value,'button is working')
+      }
     return(
-        <div className="post page">
+        <div className="post-page">
 
             <div className="new-post-button">
                 <button 
@@ -47,7 +55,12 @@ const UserPost = ({allPosts}) => {
                         {userId === post.author._id ? 
                         <div><button onClick={() => {const token = localStorage.getItem('token')
                         deletePost(token, post._id)}}>Delete Post</button></div>
-                        : null}
+                        : <div>
+                            <form id={`${post._id}`}  onSubmit={handleSubmit}>
+                            <input id='message' placeholder='Type Message Here'/>    
+                            <button type='Submit'>Send</button>
+                            </form>
+                            </div>}
                     </div>
                 )
             })}

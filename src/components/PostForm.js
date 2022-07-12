@@ -24,7 +24,7 @@ const PostForm = () => {
       <label>Deliver?
         <input id="deliver" type="checkbox" checked={checked} onChange={handleChange} placeholder="Deliver" />
       </label>
-      <button type='Submit'>Submit Post</button>
+      <button type='Submit' onClick={()=>{window.location.reload(false)}}>Submit Post</button>
     </form>
     </div> : <h2 className="profile-not-logged-in">Login/Register to post!</h2>}
     </div>
