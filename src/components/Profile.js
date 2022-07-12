@@ -1,86 +1,50 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { getProfile } from "../api";
 
 const Profile = () => {
-  const [myInfo, setMyInfo] = useState({});
-  const [messages, setMessages] = useState([])
-  const [user, setUser] = useState('')
-  const [post, setPost] = useState([])
+  const [user, setUser] = useState("");
 
- let token = localStorage.getItem("token");
- 
- const getMyInfo = async () => {
-      const userData = await getProfile(token);
-      setMessages(userData.data.messages)
-      setUser(userData.data._id)
-      setPost(userData.data.posts)
-      console.log(userData.data.posts, "profile returned info");
-      setMyInfo(userData);
-    }
+  let navigate = useNavigate();
+  let token = localStorage.getItem("token");
+
+  const getMyInfo = async () => {
+    const userData = await getProfile(token);
+    setUser(userData.data.username);
+  };
   useEffect(() => {
     getMyInfo();
   }, []);
-  console.log(myInfo, 'myinfo')
-  console.log(post, 'post')
+
   return (
     <div>
-      {token ? <h2>Activity</h2> : <h2 className="profile-not-logged-in">Login/Register to view!</h2>}
+      {token ? (
         <div>
-          <h2>My Posts</h2>
-          {post.map((post) => {
-            return (post.active ? 
-              <div className='single-post'>
-                <h2>{post.title}</h2>
-                        <p>{post.description}</p>
-                        <h4>Price: {post.price}</h4>
-                        <h4>Location: {post.location}</h4>
-              </div>
-            :null )
-          })} 
+          <button
+            type="button"
+            id="profile-buttons"
+            onClick={() => {
+              navigate("/profile/posts");
+            }}
+          >
+            Posts
+          </button>
+          <button
+            type="button"
+            id="profile-buttons"
+            onClick={() => {
+              navigate("/profile/messages");
+            }}
+          >
+            Messages
+          </button>
+          <h1 id="welcome-message">Welcome {user}!</h1>
         </div>
-        <div>
-        <h2>Messages To Me</h2>  
-        {messages.map((message) => {
-          return ( message.fromUser._id !== user ?
-            <div key={message._id} id="message-box">
-              <h3>From: {message.fromUser.username}</h3>
-              <p>{message.content}</p>
-              <p>Post: {message.post.title}</p>
-            </div> : null 
-          );
-        })}
-        </div>
-        <div>
-          <h2>Messages From Me</h2>
-          {messages.map((message) => {
-            return ( message.fromUser._id === user ?
-              <div key={message._id} id="message-box">
-             
-                <p>{message.content}</p>
-                <p>Post: {message.post.title}</p>
-              </div> : null 
-            );
-          })}
-        </div>
+      ) : (
+        <h2 className="profile-not-logged-in">Login/Register to view!</h2>
+      )}
     </div>
-  )
+  );
 };
 
 export default Profile;
-
-{/* <div>
-      {myInfo.data ? (
-        <div>
-          {myInfo.data.messages.map((message, index) => {
-            return (
-              <div key={index}>
-                <h1>Message is here</h1>
-                <p>{message._id}</p>
-              </div>
-            );
-          })}{" "}
-        </div>
-      ) : (
-        <div>hello</div>
-      )}
-    </div> */}

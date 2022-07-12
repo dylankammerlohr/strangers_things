@@ -1,12 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { getPosts, registerPerson } from "../api";
-import { Posts, Register, Navbar, Login, Profile, PostForm } from "./";
-
+import {
+  Posts,
+  Register,
+  Navbar,
+  Login,
+  Profile,
+  PostForm,
+  MyMessages,
+  MyPosts,
+} from "./";
 
 export default function App(props) {
   const [allPosts, setAllPosts] = useState([]);
-  const [token] = [props.token]
+  const [token] = [props.token];
   async function fetchAllPosts() {
     try {
       const data = await getPosts();
@@ -21,14 +29,23 @@ export default function App(props) {
 
   return (
     <>
-    <Navbar />
+      <Navbar />
       <Routes>
-        <Route path='/profile' element={<Profile token = {token}/>}/>
-        <Route path='/login-and-register' element={<div><Login /><Register /></div>}/>
-        <Route path="/posts" element={<Posts allPosts={allPosts} token = {token}/>} />
-        <Route path='/posts/add' element={<PostForm token = {token}/>}/>
-        
+        <Route path="/profile" element={<Profile token={token} />} />
+        <Route
+          path="/login-and-register"
+          element={
+            <div>
+              <Login />
+              <Register />
+            </div>
+          }
+        />
+        <Route path="/" element={<Posts allPosts={allPosts} token={token} />} />
+        <Route path="/posts/add" element={<PostForm token={token} />} />
+        <Route path="/profile/posts" element={<MyPosts />} />
+        <Route path="/profile/messages" element={<MyMessages />} />
       </Routes>
-      </>
+    </>
   );
 }

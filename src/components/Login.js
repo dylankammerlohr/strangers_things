@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { loginPerson } from "../api";
 
 const Login = () => {
@@ -15,17 +15,16 @@ const Login = () => {
   };
 
   const handleSubmit = async (event) => {
-    event.preventDefault()
+    event.preventDefault();
     const token = await loginPerson(username, password);
-    console.log(token, 'token after logging in')
     localStorage.setItem("token", token);
-    window.location.reload(false)
+    window.location.reload(false);
   };
 
   return (
     <div>
-      <h3 className="form-title">Login</h3>
-      <form onSubmit={handleSubmit} className = "login-box">
+      <h2 className="form-title">Login</h2>
+      <form onSubmit={handleSubmit} className="login-box">
         <label>Username:</label>
         <input
           id="username"
@@ -35,13 +34,16 @@ const Login = () => {
         />
 
         <label>Password:</label>
-        <input 
-        id="password" 
-        onChange={handleOnChange} 
-        value = {password}
-        placeholder="password" />
+        <input
+          id="password"
+          onChange={handleOnChange}
+          value={password}
+          placeholder="password"
+        />
 
-        <button type="submit" id="login-button">Login</button>
+        <button type="submit" id="login-button">
+          Login
+        </button>
       </form>
     </div>
   );

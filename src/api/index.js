@@ -2,22 +2,9 @@
 export const COHORT = "2206-FTB-ET-WEB-FT"
 export const APIURL = `https://strangers-things.herokuapp.com/api/${COHORT}`
 
-
-// export const getPost = async() => {
-//     const response = await fetch(`${APIURL}/posts`)
-//     const result = await response.json()
-//     // .then(response => response.json())
-//     // .then(result => {
-//     console.log(result, 'result');
-//   }
-//   console.log(getPost, 'getpost')
-// //   )
-// //     .catch(console.error)
-// // }
 export async function getPosts() {
   const response = await fetch(`${APIURL}/posts`)
   const result = await response.json()
-  // console.log(result)
   return result.data.posts
 }
 
@@ -44,9 +31,7 @@ export const newPost = async (event) => {
             }
         })
     })
-    console.log(response, 'api index response')
     const result = await response.json()
-    console.log(result, 'api index result')
 }
 
 export async function registerPerson(event){
@@ -67,10 +52,8 @@ export async function registerPerson(event){
     })
     const result = await response.json()
     const token = result.data.token
-    console.log(token)
     localStorage.setItem("token", token)
     const tokenFromStorage = localStorage.getItem("token")
-    console.log(tokenFromStorage)
 }
 
 export async function loginPerson(username, password){
@@ -88,13 +71,10 @@ export async function loginPerson(username, password){
         })
   })
   const result = await response.json()
-  console.log(result, 'api/index result')
   const token = result.data.token
-  console.log(token, 'token in api index')
   return token
 }
 
-// profile
 export const getProfile = async(token) => {
     const response = await fetch(`${APIURL}/users/me`, {
         headers: {
@@ -103,9 +83,6 @@ export const getProfile = async(token) => {
           }, 
     })
     const result = await response.json()
-    console.log(result, 'api profile result')
-    // const data = result.data
-    // console.log(data, 'data')
     return result
 }
 
@@ -118,8 +95,6 @@ export const deletePost = async(token, postID) => {
     },
   })
   const result = await response.json()
-  
-  console.log(result)
 }
 
 export const sendMessage = async(token, postID, message) => {
@@ -136,6 +111,4 @@ export const sendMessage = async(token, postID, message) => {
     })
   })
   const result = await response.json()
-  
-  console.log(result)
 }

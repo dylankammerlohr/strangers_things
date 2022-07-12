@@ -1,24 +1,23 @@
-import React from 'react'
-import { registerPerson } from '../api';
+import React from "react";
+import { registerPerson } from "../api";
 
 const userRegister = () => {
-    async function handleSubmit(event) {
-        event.preventDefault();
-        console.log("this is your event", event);
-        registerPerson(event);
-      }
-    return (
-      <div>
-        <h3 className="form-title">Register</h3>
-        <form className= "register-box" onSubmit={handleSubmit}>
+  async function handleSubmit(event) {
+    event.preventDefault();
+    registerPerson(event);
+  }
+  return (
+    <div>
+      <h2 className="form-title">Register</h2>
+      <form className="register-box" onSubmit={handleSubmit}>
         <label>Username:</label>
         <input id="username" placeholder="username"></input>
         <label>Password:</label>
         <input id="password" placeholder="password"></input>
         <button id="register-button">Register</button>
       </form>
-      </div>
-    )
-}
+    </div>
+  );
+};
 
-export default userRegister
+export default userRegister;

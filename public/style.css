@@ -1,16 +1,49 @@
 *{
     margin: 0;
 }
-/* nav{
-    display:flex;
-    align-items: center;
-    background-color: rgb(25, 130, 160);
-    height: 8vh;
-} */
+body {
+    background-color: #606c38;
+    font-family: 'Nunito', sans-serif;
+}
+#logout-button{
+    font-family: 'Nunito', sans-serif;
+    align-self: baseline;
+    border-radius: 5px;
+    border: white;
+    padding: 5px;
+    background-color: #FEFAE0;
+    font-size: 16px;
+    margin-top: 10px;
+}
 
-#postForm{
+#logout-button:hover{
+    background-color: #BC6C25;
+    color: white;
+}
+nav {
     display: flex;
-    flex-direction:column;
+    background-color: #283618;
+    height: 8vh;
+}
+
+.nav-title {
+    align-self: center;
+    color: white;
+    margin-left: 30px;
+    font-size: xx-large;
+    width: 50%;
+}
+
+.nav-links {
+    display:flex;
+    justify-content: space-evenly;
+    align-content: center;
+    align-self: center;
+    width: 50%;
+}
+
+#deliver {
+    margin-left: 10px;
 }
 
 .posts{
@@ -18,15 +51,51 @@
     flex-direction: column;
     align-items: center;
 }
+
 .single-post,
 #message-box {
-    display: block, flex;
+    display: flex;
     flex-direction: column;
+    justify-content: center;
     width: 60%;
     box-sizing: border-box;
     border: 1px solid black;
+    border-radius: 5px;
     margin: 5px;
-    padding: 5px;
+    padding: 10px;
+    background-color: rgb(218, 215, 205);
+}
+
+#post-title,
+#post-description,
+#post-price,
+#post-seller,
+#post-location {
+    padding: 10px;
+}
+
+#post-message {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+#message-input {
+    align-self: center;
+    width: 80%;
+}
+
+#message-button {
+    background-color: #283618;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    font-size: 15px;
+    margin-left: 10px;
+    padding: 8px;
+}
+#message-button:active {
+    font-size: 80%;
 }
 
 .login-box,
@@ -37,9 +106,11 @@
     align-items: center;
     box-sizing: border-box;
     border: 1px solid black;
+    border-radius: 5px;
     padding: 10px;
-    margin: 20px;
-    width: 70%;
+    margin-right: 8%;
+    margin-left: 8%;
+    background-color: rgb(218, 215, 205);
 }
 
 .login-box > input,
@@ -62,26 +133,11 @@
     padding: 10px;
     margin: 5px;
     text-decoration: none;
-    color: black;
-}
-
-#logout-button{
-    float: right;
-    border-radius: 5px;
-    border: white;
-    padding: 5px;
-    background-color: rgb(189, 188, 188);
-    font-size: 16px;
-}
-
-#logout-button:hover{
-    background-color: rgb(143, 143, 143);
     color: white;
 }
 
 .active {
-    color: red;
-    text-decoration: underline;
+    color: #dda15e;
 }
 
 .new-post-button {
@@ -91,13 +147,25 @@
    margin: 10px;
 }
 
+#newPost {
+    font-family: 'Nunito', sans-serif;
+    background-color: #FEFAE0;
+    border-radius: 5px;
+    border: none;
+    font-size: 20px;
+}
+
 .postForm {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
+    border-radius: 5px;
+    background-color: rgb(218, 215, 205);
     border: 1px solid black;
     padding: 10px;
-    margin: 10px;
+    margin-left: 8%;
+    margin-right: 8%;
+    margin-top: 2%;
 }
 
 .postForm > input {
@@ -108,7 +176,103 @@
     padding: 5px;
 }
 
+.new-message {
+    margin-left: 5%;
+}
+
 .profile-not-logged-in {
     text-align: center;
     padding-top: 50px;
+}
+
+#welcome-message,
+.profile-not-logged-in {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-size: 80px;
+    margin-top: 100px;
+}
+
+#buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#profile-buttons {
+    font-family: 'Nunito', sans-serif;
+    background-color: #FEFAE0;
+    border-radius: 5px;
+    border: none;
+    font-size: 20px;
+    margin: 15px 15px 0px 15px;
+}
+
+#profile-buttons:hover {
+    background-color: #edead1;
+}
+
+#my-post-title,
+#my-messages-title,
+.form-title {
+    color: white;
+    margin-left: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-decoration: underline;
+}
+
+.profile-posts,
+#message-box {
+    box-sizing: border-box;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: rgb(218, 215, 205);
+    margin-left: 5%;
+    margin-top: 10px;
+    width: 90%;
+}
+
+#create-post-title {
+    text-align: center;
+    color: white;
+    text-decoration: underline;
+    margin-top: 2%;
+}
+
+#new-post-submit,
+#login-button,
+#register-button,
+#delete-button {
+    font-family: 'Nunito', sans-serif;
+    background-color: #283618;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+#delete-button {
+    float: right;
+    padding: 8px;
+    font-size: 15px;
+}
+
+#login-button:hover,
+#register-button:hover,
+#delete-button:hover {
+    background-color: #DDA15E;
+}
+
+#new-post-submit:active {
+    font-size: 70%;
+}
+
+#new-post-submit:hover {
+    background-color: #3e5325;
+}
+
+.search-input {
+    margin: 5px;
 }

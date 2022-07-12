@@ -1,18 +1,18 @@
-import React from 'react'
+import React from "react";
 
 const Logout = () => {
-    async function logoutUser(){
-        console.log(localStorage.getItem('token'))
-        localStorage.removeItem('token');
-        window.location.reload(false)
-    };
-   
-    return(
-        <div className='logout'>
-            <button id = 'logout-button'
-            onClick = {logoutUser}>Logout</button>
-        </div>
-    )
-}
+  async function logoutUser() {
+    localStorage.removeItem("token");
+    window.location.reload(false);
+  }
 
-export default Logout
+  return (
+    <div className="logout">
+      <button id="logout-button" onClick={logoutUser}>
+        Logout
+      </button>
+    </div>
+  );
+};
+
+export default Logout;

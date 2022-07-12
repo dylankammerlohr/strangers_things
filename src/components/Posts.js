@@ -1,73 +1,96 @@
-import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { deletePost, getProfile, sendMessage } from '../api'
- 
-const UserPost = ({allPosts}) => {
-//    console.log(allPosts, 'all posts in post comp')
-    const [userId, setUserId]= useState('')
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { deletePost, getProfile, sendMessage } from "../api";
 
-    const getUserId = async () => {
-        const token = localStorage.getItem('token')
-        const userData = await getProfile(token);
-        const userID = userData.data._id
-        console.log(userData, "userdata");
-        setUserId(userID);
-      }
-      useEffect(() => {
-        getUserId();
-      }, []);
+const UserPost = ({ allPosts }) => {
+  const [userId, setUserId] = useState("");
+  // const [posts, setPosts] = useState([])
+  // const [searchTerm, setSearchTerm] = useState('')
 
+  // function postSearch(post, text){
+  //     let text = setSearchTerm.includes()
+  //     let match = false
+  //     return match
+  // }
 
-    let navigate = useNavigate()
+  const getUserId = async () => {
+    const token = localStorage.getItem("token");
+    const userData = await getProfile(token);
+    const userID = userData.data._id;
+    setUserId(userID);
+  };
+  useEffect(() => {
+    getUserId();
+  }, []);
 
-    console.log(allPosts[0], 'my post')
+  let navigate = useNavigate();
 
-      const handleSubmit = async(event) =>{
-        event.preventDefault()
-        const token = localStorage.getItem('token')
-        let postID = event.target.id
-        let message = event.target[0].value
-        sendMessage(token, postID, message)
-        console.log(event.target[0].value,'button is working')
-      }
-    return(
-        <div className="post-page">
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const token = localStorage.getItem("token");
+    let postID = event.target.id;
+    let message = event.target[0].value;
+    sendMessage(token, postID, message);
+  };
+  return (
+    <div className="post-page">
+      <div className="search-input">
+        <input placeholder="Search" />
+      </div>
+      <div className="new-post-button">
+        <button
+          type="button"
+          id="newPost"
+          onClick={() => {
+            navigate("/posts/add");
+          }}
+        >
+          Add New Post
+        </button>
+      </div>
 
-            <div className="new-post-button">
-                <button 
-                type = 'button' 
-                id = 'newPost'
-                onClick = {() => {
-                    navigate('/posts/add')
-                }}>
-                Add New Post</button>
-            </div>
-
-            <div className='posts'>
-            {allPosts.map((post, index) => {
-                return (
-                    <div className='single-post' key = {index}>
-                        <h2>{post.title}</h2>
-                        <p>{post.description}</p>
-                        <h4>Price: {post.price}</h4>
-                        <h3>Seller: {post.author.username}</h3>
-                        <h4>Location: {post.location}</h4>
-                        {userId === post.author._id ? 
-                        <div><button onClick={() => {const token = localStorage.getItem('token')
-                        deletePost(token, post._id)}}>Delete Post</button></div>
-                        : <div>
-                            <form id={`${post._id}`}  onSubmit={handleSubmit}>
-                            <input id='message' placeholder='Type Message Here'/>    
-                            <button type='Submit'>Send</button>
-                            </form>
-                            </div>}
-                    </div>
+      <div className="posts">
+        {allPosts.map((post, index) => {
+          return (
+            <div className="single-post" key={index}>
+              <h2 id="post-title">{post.title}</h2>
+              <p id="post-description">{post.description}</p>
+              <h4 id="post-price">Price: {post.price}</h4>
+              <h3 id="post-seller">Seller: {post.author.username}</h3>
+              <h4 id="post-location">Location: {post.location}</h4>
+              {localStorage.getItem("token") ? (
+                userId === post.author._id ? (
+                  <div>
+                    <button
+                      id="delete-button"
+                      onClick={() => {
+                        const token = localStorage.getItem("token");
+                        deletePost(token, post._id);
+                      }}
+                    >
+                      Delete Post
+                    </button>
+                  </div>
+                ) : (
+                  <div className="new-message">
+                    <form id={`${post._id}`} onSubmit={handleSubmit}>
+                      <input
+                        id="message-input"
+                        placeholder="Type Message Here"
+                      />
+                      <button id="message-button" type="Submit">
+                        Send
+                      </button>
+                    </form>
+                  </div>
                 )
-            })}
+              ) : null}
             </div>
-        </div>
-    )
+          );
+        })}
+      </div>
+    </div>
+  );
+};
 
-}
-
-export default UserPost
+export default UserPost;
