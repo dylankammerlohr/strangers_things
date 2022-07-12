@@ -21,14 +21,14 @@ const Profile = () => {
   console.log(myInfo, 'myinfo')
   return (
     <div>
-      <h1>Messages</h1>
+      {token ? <h2>Messages</h2> : <h2 className="profile-not-logged-in">Login/Register to view!</h2>}
         <div>
         {messages.map((message) => {
           return ( message.fromUser._id !== user ?
-            <div key={message._id}>
-              <h3>from: {message.fromUser.username}</h3>
-              <p>message: {message.content}</p>
-              <p>post: {message.post.title}</p>
+            <div key={message._id} id="message-box">
+              <h3>From: {message.fromUser.username}</h3>
+              <p>{message.content}</p>
+              <p>Post: {message.post.title}</p>
             </div> : null 
           );
         })}

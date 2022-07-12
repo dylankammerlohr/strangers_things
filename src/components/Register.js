@@ -8,13 +8,16 @@ const userRegister = () => {
         registerPerson(event);
       }
     return (
-        <form onSubmit={handleSubmit}>
-        <label>User Name</label>
+      <div>
+        <h3 className="form-title">Register</h3>
+        <form className= "register-box" onSubmit={handleSubmit}>
+        <label>Username:</label>
         <input id="username" placeholder="username"></input>
-        <label>Password</label>
+        <label>Password:</label>
         <input id="password" placeholder="password"></input>
-        <button>Register</button>
+        <button id="register-button">Register</button>
       </form>
+      </div>
     )
 }
 

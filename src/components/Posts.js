@@ -20,15 +20,12 @@ const UserPost = ({allPosts}) => {
 
     let navigate = useNavigate()
 
-
     console.log(allPosts[52], 'my post')
 
-    
     return(
-        
         <div className="post page">
 
-            <div>
+            <div className="new-post-button">
                 <button 
                 type = 'button' 
                 id = 'newPost'
@@ -38,15 +35,15 @@ const UserPost = ({allPosts}) => {
                 Add New Post</button>
             </div>
 
-            <section className='posts'>
+            <div className='posts'>
             {allPosts.map((post, index) => {
                 return (
                     <div className='single-post' key = {index}>
                         <h2>{post.title}</h2>
                         <p>{post.description}</p>
-                        <h4>{post.price}</h4>
+                        <h4>Price: {post.price}</h4>
                         <h3>Seller: {post.author.username}</h3>
-                        <h4>{post.location}</h4>
+                        <h4>Location: {post.location}</h4>
                         {userId === post.author._id ? 
                         <div><button onClick={() => {const token = localStorage.getItem('token')
                         deletePost(token, post._id)}}>Delete Post</button></div>
@@ -54,7 +51,7 @@ const UserPost = ({allPosts}) => {
                     </div>
                 )
             })}
-            </section>
+            </div>
         </div>
     )
 

@@ -19,12 +19,14 @@ const Login = () => {
     const token = await loginPerson(username, password);
     console.log(token, 'token after logging in')
     localStorage.setItem("token", token);
+    window.location.reload(false)
   };
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <label>Username</label>
+      <h3 className="form-title">Login</h3>
+      <form onSubmit={handleSubmit} className = "login-box">
+        <label>Username:</label>
         <input
           id="username"
           onChange={handleOnChange}
@@ -32,14 +34,14 @@ const Login = () => {
           placeholder="username"
         />
 
-        <label>Password</label>
+        <label>Password:</label>
         <input 
         id="password" 
         onChange={handleOnChange} 
         value = {password}
         placeholder="password" />
 
-        <button type="submit">Login</button>
+        <button type="submit" id="login-button">Login</button>
       </form>
     </div>
   );

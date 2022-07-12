@@ -3,8 +3,95 @@
     flex-direction:column;
 }
 
-.single-post {
+.single-post,
+#message-box {
     display: block;
     box-sizing: border-box;
     border: 1px solid black;
+    margin: 5px;
+    padding: 5px;
+}
+
+.login-box,
+.register-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 20px;
+    width: 70%;
+}
+
+.login-box > input,
+.register-box > input {
+    width: 90%;
+    margin: 10px;
+}
+
+.form-title {
+    display: flex;
+    justify-content: left;
+    margin-left: 70px;
+    text-decoration: underline;
+}
+
+.home-link,
+.post-link,
+.profile-link,
+.login-register-link {
+    padding: 10px;
+    margin: 5px;
+    text-decoration: none;
+    color: black;
+}
+
+#logout-button{
+    float: right;
+    border-radius: 5px;
+    border: white;
+    padding: 5px;
+    background-color: rgb(189, 188, 188);
+    font-size: 16px;
+}
+
+#logout-button:hover{
+    background-color: rgb(143, 143, 143);
+    color: white;
+}
+
+.active {
+    color: red;
+    text-decoration: underline;
+}
+
+.new-post-button {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin: 10px;
+}
+
+.postForm {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+}
+
+.postForm > input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5px;
+    padding: 5px;
+}
+
+.profile-not-logged-in {
+    text-align: center;
+    padding-top: 50px;
 }

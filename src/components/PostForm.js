@@ -14,7 +14,9 @@ const PostForm = () => {
       newPost(event)
     }
   return (
-    <form id='postForm' onSubmit={handleSubmit}>
+    <div>
+      <h3>Create New Post</h3>
+    <form onSubmit={handleSubmit} className="postForm">
       <input id="title" placeholder="Title" />
       <input id="description" placeholder="Description" />
       <input id="price" placeholder="Price" />
@@ -24,6 +26,7 @@ const PostForm = () => {
       </label>
       <button type='Submit'>Submit Post</button>
     </form>
+    </div>
   );
 };
 

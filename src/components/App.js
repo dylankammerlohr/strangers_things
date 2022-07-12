@@ -24,10 +24,10 @@ export default function App(props) {
     <Navbar />
       <Routes>
         <Route path='/profile' element={<Profile token = {token}/>}/>
-        <Route path='/login' element={<Login />}/>
-        <Route path="/register" element={<Register />}/>
+        <Route path='/login-and-register' element={<div><Login /><Register /></div>}/>
         <Route path="/posts" element={<Posts allPosts={allPosts} token = {token}/>} />
-        <Route path='/posts/add' element={<PostForm />}/>
+        <Route path='/posts/add' element={<PostForm token = {token}/>}/>
+        
       </Routes>
       </>
   );
