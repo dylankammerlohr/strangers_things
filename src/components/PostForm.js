@@ -15,8 +15,8 @@ const PostForm = () => {
     }
   return (
     <div>
-      <h3>Create New Post</h3>
-    <form onSubmit={handleSubmit} className="postForm">
+      {localStorage.getItem('token') ? <div><h3>Create New Post</h3>
+      <form onSubmit={handleSubmit} className="postForm">
       <input id="title" placeholder="Title" />
       <input id="description" placeholder="Description" />
       <input id="price" placeholder="Price" />
@@ -26,6 +26,7 @@ const PostForm = () => {
       </label>
       <button type='Submit'>Submit Post</button>
     </form>
+    </div> : <h2 className="profile-not-logged-in">Login/Register to post!</h2>}
     </div>
   );
 };
