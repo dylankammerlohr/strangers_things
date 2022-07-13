@@ -3,7 +3,7 @@ import React from "react";
 const Logout = () => {
   async function logoutUser() {
     localStorage.removeItem("token");
-    window.location.reload();
+    window.location.reload(true);
   }
 
   return (

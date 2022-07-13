@@ -35,7 +35,7 @@ const PostForm = () => {
               id="new-post-submit"
               type="Submit"
               onClick={() => {
-                window.location.reload();
+                window.location.reload(true);
               }}
             >
               Submit Post
