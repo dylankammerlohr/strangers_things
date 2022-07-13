@@ -18,7 +18,7 @@ const Login = () => {
     event.preventDefault();
     const token = await loginPerson(username, password);
     localStorage.setItem("token", token);
-    // window.location.reload(false);
+    window.location.reload();
   };
 
   return (
